@@ -1,0 +1,53 @@
+{% extends "navbar.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+{% endblock %}
+
+{% block body %}
+<div class="body-home">
+    <h1> Inicio </h1>
+    <h5> Observa nuestros útlimos productos disponibles</h5>
+    <br/>
+
+    <!-- Barra de búsqueda -->
+    <form method="GET" action="{{ url_for('home') }}">
+        <input type="text" name="search" placeholder="Buscar producto..." class="form-control" />
+        <br/>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    <br/>
+
+    <!-- Render de los productos -->
+    <div class="productos-container">
+        {% for item in items %}
+        <div class="producto">
+            <img src="{{ item.imagen_producto }}" class="card-img-top" alt="{{ item.nombre_producto }}">
+            <div>
+                <h5>{{ item.nombre_producto }}</h5>
+                <p>{{ item.descripcion }}</p>
+                <p>Precio: ${{ item.precio }}</p>
+            </div>
+            <form method="POST" action="{{url_for('añadir_carrito')}}">
+                <input type="hidden" name="id_producto" value="{{ item.id_producto }}">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" name="cantidad" value="1" min="1" required>
+                <button type="submit">Añadir al carrito</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Botón de carrito fijo -->
+     <div class="boton-carrito">
+        <a href="{{ url_for('carrito') }}">
+            <img src="https://cdn-icons-png.flaticon.com/512/5412/5412512.png"/>
+        </a>   
+     </div>
+
+
+</div>
+{% endblock %}

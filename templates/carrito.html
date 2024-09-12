@@ -1,0 +1,44 @@
+{% extends "navbar.html" %}
+
+{% block title %}Carrito{% endblock %}
+
+{% block body %}
+<div class="body-carrito">
+    <h2>Tu Carrito</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th> <!-- Columna para los botones -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.cantidad }}</td>
+                <td>{{ producto.subtotal }}</td>
+                <td> 
+                    <form action="{{ url_for('borrar_carrito') }}" method="POST">
+                        <input type="hidden" name="id_producto" value="{{ producto.id_producto }}">
+                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Total a pagar: ${{ total }}</h3>
+
+    <form action="{{ url_for('checkout') }}" method="POST">
+        <button type="submit" class="btn btn-success">
+            Pagar con MercadoPago
+        </button>
+    </form>
+    
+</div>
+{% endblock %}

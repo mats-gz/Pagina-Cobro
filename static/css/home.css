@@ -1,0 +1,79 @@
+.body-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+}
+
+/* Contenedor de productos */
+.productos-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se muevan a la siguiente fila */
+    justify-content: space-around; /* Distribuye espacio uniformemente entre los productos */
+    max-width: 1000px; /* Ajusta el tamaño máximo del contenedor según tus necesidades */
+    margin: 0 auto;
+}
+
+/* Producto individual */
+.producto {
+    flex: 1 1 calc(30% - 10px); /* Cambia el porcentaje para ajustar el tamaño de cada producto */
+    margin: 20px; /* Aumenta el margen entre productos */
+    box-sizing: border-box;
+    padding: 10px; /* Aumenta el espacio interno del producto */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease; /* Efecto de transición al hacer hover */
+}
+
+/* Aumenta el tamaño del cuadro al hacer hover */
+.producto:hover {
+    transform: scale(1.05); /* Aumenta el tamaño del cuadro en un 5% */
+}
+
+/* Estilo opcional para el título y la imagen del producto */
+.producto img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px; /* Añadir espacio debajo de la imagen */
+}
+
+.producto h5 {
+    font-size: 1.4em; /* Aumenta el tamaño del título */
+    margin: 15px 0; /* Aumenta el margen superior e inferior */
+}
+
+.producto p {
+    font-size: 1em; /* Aumenta el tamaño del texto de la descripción */
+    color: #555;
+}
+
+.boton-carrito {
+    position: fixed;
+    bottom: 20px;      /* Posición desde la parte inferior de la página */
+    right: 20px;       /* Posición desde la parte derecha de la página */
+    width: 60px;       /* Ancho del círculo */
+    height: 60px;      /* Alto del círculo */
+    background-color: #3b89ff;  /* Color de fondo del botón */
+    border-radius: 50%;  /* Hace que el botón sea un círculo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);  /* Sombra para el botón */
+    z-index: 1000;      /* Asegura que el botón quede siempre por encima del contenido */
+    transition: background-color 0.3s ease; /* Efecto de transición al cambiar color */
+    text-decoration: none;
+}
+
+.boton-carrito img{
+    margin-top: 10px;
+    object-fit: cover; /* Alinear la imagen sin distorsionar en el contenedor */
+    max-width: 70%;
+    height: auto;
+}
+
+.boton-carrito:hover {
+    transform: scale(1.10); /* Aumenta el tamaño del cuadro en un 5% */
+    background-color: #106cf5;  /* Cambia el color al pasar el ratón por encima */
+    cursor: pointer;            /* Muestra un puntero de mano */
+}
+

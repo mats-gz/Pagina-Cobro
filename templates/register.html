@@ -1,0 +1,18 @@
+{% extends "navbar.html" %}
+
+{% block title %}Registrarse{% endblock %}
+
+{% block body %}
+<div>
+    <h1> Registrarse </h1>
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        {{ form.email }}
+        {{ form.nombre_apellido }}
+        {{ form.usuario }}
+        {{ form.contraseña }}
+        {{ form.submit }}  
+    </form>
+</div>
+{% endblock %}
